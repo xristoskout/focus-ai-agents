@@ -1,90 +1,66 @@
 
-import { ArrowRight, Play } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { ArrowRight, Bot, Zap } from 'lucide-react';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="home" className="pt-20 pb-16 bg-gradient-to-br from-blue-50 via-purple-50 to-cyan-50 min-h-screen flex items-center">
+    <section className="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 py-20 lg:py-32">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="text-center lg:text-left animate-fade-in">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              <span className="gradient-text">{t('hero.title')}</span>
-              <br />
-              <span className="text-gray-800">{t('hero.subtitle')}</span>
+          <div className="text-center lg:text-left">
+            <div className="inline-flex items-center space-x-2 bg-blue-100 text-blue-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+              <Zap className="w-4 h-4" />
+              <span>{t('hero.badge')}</span>
+            </div>
+            
+            <h1 className="text-4xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+              {t('hero.title')}
             </h1>
             
-            <p className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl">
-              {t('hero.description')}
+            <p className="text-lg lg:text-xl text-gray-600 mb-8 leading-relaxed">
+              {t('hero.subtitle')}
             </p>
-
+            
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button 
-                size="lg" 
-                className="bg-gradient-hero text-white hover:opacity-90 transform hover:scale-105 transition-all duration-200"
-              >
-                {t('hero.cta')}
+              <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700">
+                {t('hero.cta.primary')}
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
-              
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="border-ai-blue text-ai-blue hover:bg-ai-blue hover:text-white transition-all duration-200"
-              >
-                <Play className="mr-2 w-5 h-5" />
-                {t('hero.demo')}
+              <Button variant="outline" size="lg">
+                {t('hero.cta.secondary')}
               </Button>
             </div>
           </div>
 
-          {/* Right Visual */}
-          <div className="relative animate-fade-in">
-            <div className="relative bg-white rounded-2xl shadow-2xl p-8 ai-glow">
-              {/* Chat Interface Mockup */}
-              <div className="space-y-4">
-                <div className="flex items-center space-x-2 pb-4 border-b">
-                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                  <span className="ml-4 text-sm text-gray-600">AI Assistant</span>
+          <div className="relative">
+            <div className="bg-white rounded-2xl shadow-2xl p-8 relative z-10">
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center">
+                  <Bot className="w-6 h-6 text-white" />
                 </div>
-                
-                <div className="space-y-3">
-                  <div className="flex justify-end">
-                    <div className="bg-ai-blue text-white px-4 py-2 rounded-lg max-w-xs">
-                      Γεια σας! Χρειάζομαι βοήθεια.
-                    </div>
-                  </div>
-                  
-                  <div className="flex justify-start">
-                    <div className="bg-gray-100 text-gray-800 px-4 py-2 rounded-lg max-w-xs">
-                      Καλησπέρα! Είμαι ο AI βοηθός σας. Πώς μπορώ να σας εξυπηρετήσω;
-                    </div>
-                  </div>
-                  
-                  <div className="flex justify-end">
-                    <div className="bg-ai-blue text-white px-4 py-2 rounded-lg max-w-xs">
-                      Θέλω πληροφορίες για τα προϊόντα σας.
-                    </div>
-                  </div>
-                  
-                  <div className="flex justify-start">
-                    <div className="bg-gradient-to-r from-ai-purple to-ai-cyan text-white px-4 py-2 rounded-lg max-w-xs animate-pulse-glow">
-                      Με χαρά! Έχουμε εξαιρετικές λύσεις για εσάς...
-                    </div>
-                  </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900">FOCUS AI Agent</h3>
+                  <p className="text-sm text-gray-500">{t('hero.demo.status')}</p>
+                </div>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="bg-gray-50 rounded-lg p-4">
+                  <p className="text-sm text-gray-700">{t('hero.demo.message1')}</p>
+                </div>
+                <div className="bg-blue-50 rounded-lg p-4 ml-8">
+                  <p className="text-sm text-blue-700">{t('hero.demo.message2')}</p>
+                </div>
+                <div className="bg-gray-50 rounded-lg p-4">
+                  <p className="text-sm text-gray-700">{t('hero.demo.message3')}</p>
                 </div>
               </div>
             </div>
-
-            {/* Floating Elements */}
-            <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-r from-ai-blue to-ai-purple rounded-full opacity-20 animate-float"></div>
-            <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-gradient-to-r from-ai-cyan to-ai-indigo rounded-full opacity-20 animate-float" style={{ animationDelay: '1s' }}></div>
+            
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 rounded-2xl transform rotate-3 scale-105 opacity-20"></div>
           </div>
         </div>
       </div>
